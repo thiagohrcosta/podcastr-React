@@ -4,6 +4,8 @@ import { format, parseISO} from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 import { converDurationToTimeString } from '../utils/convertDurationToTimeString';
 
+import styles from '.home.module.scss';
+
 type Episode = {
     id: string;
     title: string;
@@ -23,9 +25,16 @@ type HomeProps = {
 
 export default function Home(props: HomeProps) {
   return (
-    <div>
-      <h1>Index</h1>
-      <p>{JSON.stringify(props.episodes)}</p>
+    <div className={styles.homepage}>
+      <section className={styles.latestEpisodes}>
+        <h2>Últimos lançamentos</h2>
+        <ul>
+
+        </ul>
+      </section>
+      <section className={styles.allEpisodes}>
+
+      </section>
     </div>
   )
 }
@@ -53,9 +62,13 @@ export const getStaticProps: GetStaticProps = async () => {
     };
   })
 
+  const latestEpisodes = episodes.slice(0,2);
+  const allEpisodes = episodes.slice(2,episodes.length);
+
   return {
     props: {
-      episodes,
+      latestEpisodes,
+      allEpisodes,
     },
     revalidate: 60 * 60 * 8,
   }
