@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { api } from '../../services/api';
 import { converDurationToTimeString } from "../../utils/convertDurationToTimeString";
 import ptBR from "date-fns/locale/pt-BR";
-
+import Link from 'next/link';
 import Image from 'next/image';
 
 import styles from './episode.module.scss';
@@ -29,9 +29,11 @@ export default function Episode({ episode }: EpisodeProps){
     return (
         <div className={styles.episode}>
             <div className={styles.thumbnailContainer}>
-                <button type="button">
-                    <img src="/arrow-left.svg" alt="Voltar" />
-                </button>
+                <Link href="/">
+                    <button type="button">
+                        <img src="/arrow-left.svg" alt="Voltar" />
+                    </button>
+                </Link>
                 <Image 
                     width={700} 
                     height={160} 
