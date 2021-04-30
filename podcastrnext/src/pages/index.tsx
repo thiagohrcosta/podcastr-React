@@ -12,7 +12,6 @@ type Episode = {
   id: string;
   title: string;
   thumbnail: string;
-  description: string;
   members: string;
   duration: string;
   durationAsString: string;
@@ -65,12 +64,14 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
         <h2>Todos os episódios</h2>
         <table cellSpacing={0}>
           <thead>
-            <th></th>
-            <th>Podcast</th>
-            <th>Integrantes</th>
-            <th>Data</th>
-            <th>Duração</th>
-            <th></th>
+            <tr>
+              <th></th>
+              <th>Podcast</th>
+              <th>Integrantes</th>
+              <th>Data</th>
+              <th>Duração</th>
+              <th></th>
+            </tr>            
           </thead>
           <tbody>
             {allEpisodes.map(episode => {
@@ -85,7 +86,11 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
                       objectFit="cover"
                     />
                   </td>
-                  <td>{episode.title}</td>
+                  <td>
+                    <Link href={`/episodes/${episode.id}`}>
+                      <a>{episode.title}</a>                    
+                    </Link> 
+                  </td>
                   <td>{episode.members}</td>
                   <td style={{ width: 100}}>{episode.publishedAt}</td>
                   <td>{episode.durationAsString}</td>
@@ -126,7 +131,6 @@ export const getStaticProps: GetStaticProps = async () => {
       durationAsString: converDurationToTimeString(
         Number(episode.file.duration)
       ),
-      description: episode.description,
       ulr: episode.file.url,
     };
   });
