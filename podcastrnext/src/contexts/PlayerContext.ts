@@ -3,7 +3,7 @@ import { createContext } from 'react';
 type Episode = {
     title: string;
     members: string;
-    thmbnail: string;
+    thumbnail: string;
     duration: number;
     url: string
 };
