@@ -3,9 +3,11 @@ import "../styles/global.scss";
 import { Header } from "../components/Header";
 import styles from "../styles/app.module.scss";
 import { Player } from "../components/Player";
+import { PlayerContext } from "../contexts/PlayerContext";
 
 function MyApp({ Component, pageProps }) {
   return (
+    <PlayerContext.Provider value={'String Test'}>
     <div className={styles.wrapper}>
       <main>
         <Header />
@@ -14,6 +16,7 @@ function MyApp({ Component, pageProps }) {
 
       <Player />
     </div>
+    </PlayerContext.Provider>
   )
 }
 
