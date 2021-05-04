@@ -4,9 +4,9 @@ import { PlayerContext } from "../../contexts/PlayerContext";
 import styles from "./styles.module.scss";
 
 export function Player(){
-  const {episodeList, currentEpisodeIndex} = useContext(PlayerContext);
+  const { episodeList, currentEpisodeIndex } = useContext(PlayerContext);
 
-  const episode = episodeList[currentEpisodeIndex]
+  const episode = episodeList[currentEpisodeIndex];
 
   return(
     <div className={styles.playerContainer}>
@@ -20,19 +20,19 @@ export function Player(){
           <Image 
             width={592} 
             height={592} 
-            src={episode.thumbnail}
-            objectFit="cover"          
+            src={episode.thumbnail} 
+            objectFit="cover"
           />
           <strong>{episode.title}</strong>
           <span>{episode.members}</span>
         </div>
       ) : (
         <div className={styles.emptyPlayer}>
-        <strong>Selecione um podcast para ouvir</strong>
+          <strong>Selecione um podcast para ouvir</strong>
         </div>
-      )}
+      ) }
 
-      <footer className={styles.empty}>
+      <footer className={!episode ? styles.empty : ''}>
         <div className={styles.progress}>
           <span>00:00</span>
           <div className={styles.slider}>

@@ -67,7 +67,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 		params: {
 			_limit: 2,
 			_sort: 'published_at',
-			_order: 'desc'
+			_order: 'desc',
 		}
 	})
 
@@ -87,7 +87,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { slug } = ctx.params;
-
   const { data } = await api.get(`/episodes/${slug}`);
 
   const episode = {
